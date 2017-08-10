@@ -1,12 +1,26 @@
 /* eslint-env node */
 'use strict';
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'ember-quickstart',
-    environment,
+    environment: environment,
     rootURL: '/',
     locationType: 'auto',
+    firebase: {
+      apiKey: 'AIzaSyCWHwlhXRJHyijq6jzWMSz0-MpjYlId5kA',
+      authDomain: "lib-app-1f3b8.firebaseapp.com",
+      databaseURL: "https://lib-app-1f3b8.firebaseio.com",
+      projectId: "lib-app-1f3b8",
+      storageBucket: "",
+      messagingSenderId: "981357722440"
+    },
+    // if using ember-cli-content-security-policy
+    contentSecurityPolicy: {
+      'script-src': "'self' 'unsafe-eval' apis.google.com",
+      'frame-src': "'self' https://*.firebaseapp.com",
+      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -26,10 +40,10 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.LOG_ACTIVE_GENERATION = true;
+    ENV.APP.LOG_TRANSITIONS = true;
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {
@@ -42,10 +56,10 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
   }
-
   if (environment === 'production') {
-
+    ENV['ember-faker'] = {
+      enabled: true
+    };
   }
-
   return ENV;
 };
